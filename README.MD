@@ -34,14 +34,17 @@ This call can be made from inside of a successful Post Login action (`LifecycleE
 		immediate = true, property = "key=login.events.post",
 		service = LifecycleAction.class
 	)
-public class SamlRoleMappingPostLoginAction implements LifecycleAction {
+public class SamlPostLoginAction implements LifecycleAction {
 
 	@Override
 	public void processLifecycleEvent(LifecycleEvent lifecycleEvent) throws ActionException {
 
 		SamlSpSession samlSpSession = _webSsoProfile.getSamlSpSession(lifecycleEvent.getRequest());
     
-    }
+	}
+    
+	@Reference
+	private WebSsoProfile _webSsoProfile;
 }
 ```
 
